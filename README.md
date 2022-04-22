@@ -17,12 +17,15 @@ Usuário:
  * Fazer cadastro
  * Validar matrícula
 
-Usuário enquanto solicitante:
+Usuário enquanto passageiro:
  * Solicitar nova carona 
  * Solicitar participação em carona listada
- * Enviar mensagem ao ofertante
+ * Enviar mensagem ao motorista
+ * Avaliar motorista
  
-Usuário enquanto ofertante:
+Usuário enquanto motorista:
  * Oferecer carona
- * Aceitar participação do solicitante
- * Enviar mensagem ao solicitante
+ * Aceitar passageiro
+ * Enviar mensagem ao passageiro
+ * Finalizar carona
+ * Avaliar passageiro
