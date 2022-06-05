@@ -3,7 +3,6 @@ import { inject, injectable } from 'tsyringe';
 
 import { AppError } from '../../../../error/AppError';
 import { ICarona } from '../../models/interface/carona';
-import { IPassageiroDTO } from '../../dtos/passageiros.dto';
 import {
   ICriarCaronaDTO,
   ICaronaRepository,
@@ -17,7 +16,7 @@ class CriarCaronaUseCase {
   ) {}
 
   async execute({
-    motoristaId,
+    idMotorista,
     enderecoDestino,
     enderecoSaida,
     dataHorarioSaida,
@@ -26,12 +25,10 @@ class CriarCaronaUseCase {
     vagasDisponiveis,
     veiculo,
     valor,
-    passageiros
   }: ICriarCaronaDTO): Promise<ICarona> {
 
-    try{
     const carona = await this.CaronaRepository.create({
-      motoristaId,
+      idMotorista,
       enderecoDestino,
       enderecoSaida,
       dataHorarioSaida,
@@ -39,13 +36,10 @@ class CriarCaronaUseCase {
       vagasOfertadas,
       vagasDisponiveis,
       veiculo,
-      valor,
-      passageiros
+      valor
     });
     return carona;
-  }catch(err){
-    console.log(err)
-  }
+ 
   }
 }
 

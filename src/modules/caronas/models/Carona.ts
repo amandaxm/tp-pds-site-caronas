@@ -1,11 +1,10 @@
 import mongoose, { Schema } from 'mongoose';
-import { IPassageiroDTO } from '../dtos/passageiros.dto';
 
 import { ICarona } from './interface/carona';
 
 const CaronaSchema: Schema = new Schema(
   {
-    motoristaId: {
+    idMotorista: {
       type: String,
       required: true,
     },
@@ -41,11 +40,11 @@ const CaronaSchema: Schema = new Schema(
       type: String,
       required: true,
     },
-    passageiros: [{
+    passageiros: {
     type: Array,
     "default":[],
     required: false
-  }]
+  }
 },
 );
 

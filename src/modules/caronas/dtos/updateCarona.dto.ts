@@ -1,15 +1,15 @@
 import { IPassageiroDTO } from "./passageiros.dto";
 
 interface IAtualizarCaronaDTO {
-  id: string,
+  id: String,
   enderecoDestino: String,
   enderecoSaida: String,
   dataHorarioSaida: Date,
   ativa: Boolean,
   vagasOfertadas:Number,
   vagasDisponiveis: Number,
-  veiculo: string,
-  valor: DoubleRange,
+  veiculo: String,
+  valor: String,
   passageiros: IPassageiroDTO[]
 }
 export { IAtualizarCaronaDTO };

@@ -8,7 +8,7 @@ import {
 
 class CaronaRepository implements ICaronaRepository {
   async create({
-  motoristaId,
+  idMotorista,
   enderecoDestino,
   enderecoSaida,
   dataHorarioSaida,
@@ -17,11 +17,10 @@ class CaronaRepository implements ICaronaRepository {
   vagasDisponiveis,
   veiculo,
   valor,
-  passageiros
   }: ICriarCaronaDTO): Promise<ICarona> {
  
     const carona = await Carona.create({
-      motoristaId,
+      idMotorista,
       enderecoDestino,
       enderecoSaida,
       dataHorarioSaida,
@@ -30,7 +29,6 @@ class CaronaRepository implements ICaronaRepository {
       vagasDisponiveis,
       veiculo,
       valor,
-      passageiros
     });
    
     return carona;
@@ -82,12 +80,12 @@ class CaronaRepository implements ICaronaRepository {
     return await Carona.findOne({ idUsuario });
   }
   async getCaronasUsuario(idMotorista: string): Promise<ICarona[]> {
-    return await Carona.find( { motoristaId: idMotorista } );
+    return await Carona.find( { idMotorista: idMotorista } );
   }
 
  async getCaronasPassageiro(idPassageiro: string): Promise<ICarona[]> {
 
-    return await Carona.find( { passageiroId: idPassageiro});
+    return await Carona.find( { idPassageiro: idPassageiro});
   }
 }
 

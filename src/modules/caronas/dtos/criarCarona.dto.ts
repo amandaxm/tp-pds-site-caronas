@@ -1,15 +1,13 @@
-import { IPassageiroDTO } from "./passageiros.dto"
 interface ICriarCaronaDTO {
-  motoristaId: String,
-  enderecoDestino: String,
-  enderecoSaida: String,
+  idMotorista: string,
+  enderecoDestino: string,
+  enderecoSaida: string,
   dataHorarioSaida: Date,
   ativa: Boolean,
   vagasOfertadas:Number,
   vagasDisponiveis: Number,
   veiculo: string,
-  valor: string,
-  passageiros: IPassageiroDTO[]
+  valor: string
 }
 
 export { ICriarCaronaDTO };

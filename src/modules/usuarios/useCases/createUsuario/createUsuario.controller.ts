@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import { container } from 'tsyringe';
 import * as bcrypt from 'bcrypt'
-import { CriarUsuarioUseCase } from './criarUsuario.useCase';
+import { CriarUsuarioUseCase } from './createUsuario.useCase';
 
 class CriarUsuarioController {
   async handle(request: Request, response: Response, next): Promise<Response> {

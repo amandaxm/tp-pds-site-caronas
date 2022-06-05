@@ -20,8 +20,8 @@ interface IUsuarioRepository {
   delete(_id: string): Promise<void>;
   list(): Promise<IUsuario[]>;
   getById(_id: string): Promise<IUsuario>;
-  getByName(name: String): Promise<IUsuario>;
-  getByEmail(email: String): Promise<IUsuario>;
+  getByName(name: string): Promise<IUsuario>;
+  getByEmail(email: string): Promise<IUsuario>;
 
 }
 

@@ -4,7 +4,7 @@ import { ICarona } from '../../models/interface/carona';
 
 interface ICaronaRepository {
   create({   
-    motoristaId,
+    idMotorista,
     enderecoDestino,
     enderecoSaida,
     dataHorarioSaida,
@@ -13,7 +13,7 @@ interface ICaronaRepository {
     vagasDisponiveis,
     veiculo,
     valor,
-    passageiros}: ICriarCaronaDTO): Promise<ICarona>;
+    }: ICriarCaronaDTO): Promise<ICarona>;
   update({
     id,
     enderecoDestino,

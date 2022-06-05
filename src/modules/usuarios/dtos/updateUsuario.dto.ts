@@ -1,8 +1,8 @@
 interface IAtualizarUsuarioDTO {
   id: string,
-  nome: String,
-  email: String,
-  senha: String,
+  nome: string,
+  email: string,
+  senha: string,
   ePassageiro: Boolean,
   eMotorista: Boolean
 }

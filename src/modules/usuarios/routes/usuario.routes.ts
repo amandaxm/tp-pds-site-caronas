@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import { CriarUsuarioController } from '../useCases/criarUsuario/criarUsuario.controller';
+import { CriarUsuarioController } from '../useCases/createUsuario/createUsuario.controller';
 import { LoginUsuarioController } from '../useCases/loginUsuario/loginUsuario.controller';
 import { DeleteUsuarioController } from '../useCases/deleteUsuario/deleteUsuario.controller';
 import { ListUsuarioController } from '../useCases/listUsuarios/listUsuario.controller';
