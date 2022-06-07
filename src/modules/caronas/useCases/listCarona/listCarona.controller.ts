@@ -7,7 +7,6 @@ class ListCaronaController {
   async handle(request: Request, response: Response): Promise<Response> {
     const listCaronaUseCase = container.resolve(ListCaronaUseCase);
     const carona = await listCaronaUseCase.execute();
-    console.log(carona);
     return response.status(200).json({ carona: carona });
   }
 }
