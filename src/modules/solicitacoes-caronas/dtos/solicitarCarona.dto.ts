@@ -3,7 +3,7 @@ interface ISolicitarCaronaDTO {
   idCarona: string
   idPassageiro: string,
   situacao: Status,
-  idMotorista: string
+  motorista: string
 }
 
 export { ISolicitarCaronaDTO };

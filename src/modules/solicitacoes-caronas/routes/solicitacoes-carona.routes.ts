@@ -20,7 +20,7 @@ const SolicitacoesCaronaRoutes = Router();
 SolicitacoesCaronaRoutes.post('/',auth, solicitarCaronaController.handle);
 SolicitacoesCaronaRoutes.put('/:_id',auth, aceitarRecusarCaronaController.handle);
 SolicitacoesCaronaRoutes.delete('/:_id',auth, deleteSolicitacaoController.handle);
-SolicitacoesCaronaRoutes.get('/motorista/:idMotorista',auth, showSolicitacoesCaronaMotoristaController.handle);
+SolicitacoesCaronaRoutes.get('/motorista/:motorista',auth, showSolicitacoesCaronaMotoristaController.handle);
 SolicitacoesCaronaRoutes.get('/passageiro/:idPassageiro',auth, showSolicitacoesCaronaPassageiroController.handle);
 
 export { SolicitacoesCaronaRoutes };

@@ -7,7 +7,7 @@ interface ISolicitacoesCaronaRepository {
     idCarona,
     idPassageiro,
     situacao,
-    idMotorista
+    motorista
   }: ISolicitacaoDTO): Promise<ISolicitacao>;
 
   aceitarRecusarSolicitacaoCarona({
@@ -15,7 +15,7 @@ interface ISolicitacoesCaronaRepository {
     situacao
   }: IAceitarRecusarCaronaDTO): Promise<ISolicitacao>;
   delete(_id: string): Promise<void>;
-  getCaronasSolicitadasMotorista(idMotorista: string): Promise<ISolicitacao[]>;
+  getCaronasSolicitadasMotorista(motorista: string): Promise<ISolicitacao[]>;
   getCaronasSolicitadasPassageiro(idPassageiro: string): Promise<ISolicitacao[]>;
   getById(id: string): Promise<ISolicitacao>;
 

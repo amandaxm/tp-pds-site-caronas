@@ -16,7 +16,7 @@ class CriarCaronaUseCase {
   ) {}
 
   async execute({
-    idMotorista,
+    motorista,
     enderecoDestino,
     enderecoSaida,
     dataHorarioSaida,
@@ -28,7 +28,7 @@ class CriarCaronaUseCase {
   }: ICriarCaronaDTO): Promise<ICarona> {
 
     const carona = await this.CaronaRepository.create({
-      idMotorista,
+      motorista,
       enderecoDestino,
       enderecoSaida,
       dataHorarioSaida,

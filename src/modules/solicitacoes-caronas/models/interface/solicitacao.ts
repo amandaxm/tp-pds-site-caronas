@@ -5,7 +5,7 @@ interface ISolicitacao extends Document {
   _id?: string;
   idCarona: string,
   idPassageiro: string,
-  idMotorista: string,
+  motorista: string,
   situacao: Status
 }
 

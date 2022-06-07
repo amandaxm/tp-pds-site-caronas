@@ -14,14 +14,14 @@ class SolicitacoesCaronaRepository implements ISolicitacoesCaronaRepository {
     idCarona,
     idPassageiro,
     situacao,
-    idMotorista
+    motorista
   }: ISolicitacaoDTO): Promise<ISolicitacao> {
 
     const solicitacao = await Solicitacao.create({
     idCarona,
     idPassageiro,
     situacao,
-    idMotorista
+    motorista
     });
    
     return solicitacao;
@@ -41,8 +41,8 @@ class SolicitacoesCaronaRepository implements ISolicitacoesCaronaRepository {
     return solicitacao;
   }
   
-  async getCaronasSolicitadasMotorista(idMotorista: string): Promise<ISolicitacao[]> {
-    return await Solicitacao.find( { idMotorista: idMotorista } );
+  async getCaronasSolicitadasMotorista(motorista: string): Promise<ISolicitacao[]> {
+    return await Solicitacao.find( { motorista: motorista } );
   }
 
  async getCaronasSolicitadasPassageiro(idPassageiro: string): Promise<ISolicitacao[]> {

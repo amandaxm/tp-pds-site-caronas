@@ -9,9 +9,9 @@ class ShowSolicitacoesMotoristaUseCase {
     @inject('SolicitacoesCaronaRepository')
     private repository: ISolicitacoesCaronaRepository,
   ) {}
-  async execute(idMotorista: string): Promise<ISolicitacao[]> {
+  async execute(motorista: string): Promise<ISolicitacao[]> {
   
-    return await this.repository.getCaronasSolicitadasMotorista(idMotorista);
+    return await this.repository.getCaronasSolicitadasMotorista(motorista);
   }
 }
 

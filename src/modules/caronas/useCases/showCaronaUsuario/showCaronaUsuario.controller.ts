@@ -5,10 +5,10 @@ import { ShowCaronaUsuarioUseCase } from './showCaronaUsuario.useCase';
 
 class ShowCaronaUsuarioUseController {
   async handle(request: Request, response: Response): Promise<Response> {
-    const { idMotorista } = request.params;
+    const { motorista } = request.params;
   
     const showCaronaUsuarioCase = container.resolve(ShowCaronaUsuarioUseCase);
-    const caronas= await showCaronaUsuarioCase.execute(idMotorista);
+    const caronas= await showCaronaUsuarioCase.execute(motorista);
     return response.status(200).json({ caronas: caronas });
   }
 }

@@ -12,7 +12,7 @@ const SolicitacaoSchema: Schema = new Schema(
       type: String,
       required: true,
     },
-     idMotorista: {
+     motorista: {
       type: String,
       required: true,
     },

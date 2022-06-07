@@ -21,7 +21,7 @@ class SolicitarCaronaUseCase {
     idCarona,
     idPassageiro,
     situacao,
-    idMotorista
+    motorista
   }: ISolicitacaoDTO): Promise<ISolicitacao> {
 
     var carona = await this.caronaRepository.getById(idCarona); 
@@ -30,7 +30,7 @@ class SolicitarCaronaUseCase {
         idCarona,
         idPassageiro,
         situacao,
-        idMotorista
+        motorista
       });
       return solicitacao;
     

@@ -4,7 +4,7 @@ import { ICarona } from '../../models/interface/carona';
 
 interface ICaronaRepository {
   create({   
-    idMotorista,
+    motorista,
     enderecoDestino,
     enderecoSaida,
     dataHorarioSaida,
@@ -30,7 +30,7 @@ interface ICaronaRepository {
   list(): Promise<ICarona[]>;
   getById(_id: string): Promise<ICarona>;
   getByUserId(idUsuario: string): Promise<ICarona>;
-  getCaronasUsuario(idMotorista: string): Promise<ICarona[]>;
+  getCaronasUsuario(motorista: string): Promise<ICarona[]>;
   getCaronasPassageiro(idPassageiro: string): Promise<ICarona[]>;
 }
 

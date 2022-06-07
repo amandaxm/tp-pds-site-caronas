@@ -8,7 +8,7 @@ class SolicitarCaronaController {
     const {  idCarona,
       idPassageiro,
       situacao,
-    idMotorista } = request.body;
+    motorista } = request.body;
 
 
     const solicitarCaronaUseCase = container.resolve(SolicitarCaronaUseCase);
@@ -17,7 +17,7 @@ class SolicitarCaronaController {
         idCarona,
         idPassageiro,
         situacao,
-        idMotorista
+        motorista
       });
       return response.status(201).json({ solicitacao: result });
     

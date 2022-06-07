@@ -10,9 +10,9 @@ class ShowCaronaUsuarioUseCase {
     private repository: ICaronaRepository,
   ) {}
 
-  async execute(idMotorista: string): Promise<ICarona[]> {
+  async execute(motorista: string): Promise<ICarona[]> {
   
-    return await this.repository.getCaronasUsuario(idMotorista);
+    return await this.repository.getCaronasUsuario(motorista);
   }
 }
 

@@ -4,9 +4,8 @@ import { ICarona } from './interface/carona';
 
 const CaronaSchema: Schema = new Schema(
   {
-    idMotorista: {
-      type: String,
-      required: true,
+    motorista: {
+      type: Schema.Types.ObjectId, ref: 'Usuario'
     },
     enderecoDestino: {
       type: String,
@@ -41,11 +40,11 @@ const CaronaSchema: Schema = new Schema(
       required: true,
     },
     passageiros: {
-    type: Array,
-    "default":[],
-    required: false
-  }
-},
+      type: Array,
+      "default": [],
+      required: false
+    }
+  },
 );
 
 export default mongoose.model<ICarona>('Carona', CaronaSchema);

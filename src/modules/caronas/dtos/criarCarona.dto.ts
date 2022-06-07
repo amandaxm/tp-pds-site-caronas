@@ -1,5 +1,5 @@
 interface ICriarCaronaDTO {
-  idMotorista: string,
+  motorista: string,
   enderecoDestino: string,
   enderecoSaida: string,
   dataHorarioSaida: Date,

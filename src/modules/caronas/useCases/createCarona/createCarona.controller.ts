@@ -4,7 +4,7 @@ import { CriarCaronaUseCase } from './createCarona.useCase';
 
 class CreateCaronaController {
   async handle(request: Request, response: Response, next): Promise<Response> {
-    const { idMotorista,
+    const { motorista,
       enderecoDestino,
       enderecoSaida,
       dataHorarioSaida,
@@ -19,7 +19,7 @@ class CreateCaronaController {
     const createCaronaUseCase = container.resolve(CriarCaronaUseCase);
 
     const result = await createCaronaUseCase.execute({
-      idMotorista,
+      motorista,
       enderecoDestino,
       enderecoSaida,
       dataHorarioSaida,

@@ -8,19 +8,19 @@ import {
 
 class CaronaRepository implements ICaronaRepository {
   async create({
-  idMotorista,
-  enderecoDestino,
-  enderecoSaida,
-  dataHorarioSaida,
-  ativa,
-  vagasOfertadas,
-  vagasDisponiveis,
-  veiculo,
-  valor,
+    motorista,
+    enderecoDestino,
+    enderecoSaida,
+    dataHorarioSaida,
+    ativa,
+    vagasOfertadas,
+    vagasDisponiveis,
+    veiculo,
+    valor,
   }: ICriarCaronaDTO): Promise<ICarona> {
- 
+
     const carona = await Carona.create({
-      idMotorista,
+      motorista,
       enderecoDestino,
       enderecoSaida,
       dataHorarioSaida,
@@ -30,7 +30,7 @@ class CaronaRepository implements ICaronaRepository {
       veiculo,
       valor,
     });
-   
+
     return carona;
   }
 
@@ -49,15 +49,15 @@ class CaronaRepository implements ICaronaRepository {
     const carona = await Carona.findByIdAndUpdate(
       { _id: id },
       {
-  enderecoDestino,
-  enderecoSaida,
-  dataHorarioSaida,
-  ativa,
-  vagasOfertadas,
-  vagasDisponiveis,
-  veiculo,
-  valor,
-  passageiros
+        enderecoDestino,
+        enderecoSaida,
+        dataHorarioSaida,
+        ativa,
+        vagasOfertadas,
+        vagasDisponiveis,
+        veiculo,
+        valor,
+        passageiros
       },
       { new: true },
     );
@@ -69,7 +69,7 @@ class CaronaRepository implements ICaronaRepository {
   }
 
   async list(): Promise<ICarona[]> {
-    return await Carona.find();
+    return await Carona.find().populate('motorista')
   }
 
   async getById(id: string): Promise<ICarona> {
@@ -79,13 +79,13 @@ class CaronaRepository implements ICaronaRepository {
   async getByUserId(idUsuario: string): Promise<ICarona> {
     return await Carona.findOne({ idUsuario });
   }
-  async getCaronasUsuario(idMotorista: string): Promise<ICarona[]> {
-    return await Carona.find( { idMotorista: idMotorista } );
+  async getCaronasUsuario(motorista: string): Promise<ICarona[]> {
+    return await Carona.find({ motorista: motorista });
   }
 
- async getCaronasPassageiro(idPassageiro: string): Promise<ICarona[]> {
+  async getCaronasPassageiro(idPassageiro: string): Promise<ICarona[]> {
 
-    return await Carona.find( { idPassageiro: idPassageiro});
+    return await Carona.find({ idPassageiro: idPassageiro });
   }
 }
 
