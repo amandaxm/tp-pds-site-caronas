@@ -8,11 +8,11 @@ const SolicitacaoSchema: Schema = new Schema(
       type: String,
       required: true,
     },
-    idPassageiro: {
-      type: String,
+    passageiro: {
+      type: Schema.Types.ObjectId, ref: 'Usuario',
       required: true,
     },
-     motorista: {
+    motorista: {
       type: String,
       required: true,
     },
@@ -20,7 +20,7 @@ const SolicitacaoSchema: Schema = new Schema(
       type: String,
       required: true,
     },
-},
+  },
 );
 
 export default mongoose.model<ISolicitacao>('Solicitacao', SolicitacaoSchema);

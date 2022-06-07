@@ -21,6 +21,6 @@ SolicitacoesCaronaRoutes.post('/',auth, solicitarCaronaController.handle);
 SolicitacoesCaronaRoutes.put('/:_id',auth, aceitarRecusarCaronaController.handle);
 SolicitacoesCaronaRoutes.delete('/:_id',auth, deleteSolicitacaoController.handle);
 SolicitacoesCaronaRoutes.get('/motorista/:motorista',auth, showSolicitacoesCaronaMotoristaController.handle);
-SolicitacoesCaronaRoutes.get('/passageiro/:idPassageiro',auth, showSolicitacoesCaronaPassageiroController.handle);
+SolicitacoesCaronaRoutes.get('/passageiro/:passageiro',auth, showSolicitacoesCaronaPassageiroController.handle);
 
 export { SolicitacoesCaronaRoutes };

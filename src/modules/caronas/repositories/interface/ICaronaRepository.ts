@@ -31,7 +31,7 @@ interface ICaronaRepository {
   getById(_id: string): Promise<ICarona>;
   getByUserId(idUsuario: string): Promise<ICarona>;
   getCaronasUsuario(motorista: string): Promise<ICarona[]>;
-  getCaronasPassageiro(idPassageiro: string): Promise<ICarona[]>;
+  getCaronasPassageiro(passageiro: string): Promise<ICarona[]>;
 }
 
 export { ICriarCaronaDTO, ICaronaRepository, IAtualizarCaronaDTO };

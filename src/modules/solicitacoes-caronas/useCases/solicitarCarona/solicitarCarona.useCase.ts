@@ -19,7 +19,7 @@ class SolicitarCaronaUseCase {
 
   async execute({
     idCarona,
-    idPassageiro,
+    passageiro,
     situacao,
     motorista
   }: ISolicitacaoDTO): Promise<ISolicitacao> {
@@ -28,7 +28,7 @@ class SolicitarCaronaUseCase {
    
       const solicitacao = await this.repository.solicitarCarona({
         idCarona,
-        idPassageiro,
+        passageiro,
         situacao,
         motorista
       });

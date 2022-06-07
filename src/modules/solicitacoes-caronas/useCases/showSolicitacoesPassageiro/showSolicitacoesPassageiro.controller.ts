@@ -5,9 +5,9 @@ import { ShowSolicitacoesPassageiroUseCase } from './showSolicitacoesPassageiro.
 
 class ShoSolicitacoesPassageiroController {
   async handle(request: Request, response: Response): Promise<Response> {
-    const { idPassageiro } = request.params;
+    const { passageiro } = request.params;
     const shoSolicitacoesUsuarioCase = container.resolve(ShowSolicitacoesPassageiroUseCase);
-    const solicitacoes= await shoSolicitacoesUsuarioCase.execute(idPassageiro);
+    const solicitacoes= await shoSolicitacoesUsuarioCase.execute(passageiro);
     return response.status(200).json({ solicitacoesPassageiro: solicitacoes });
   }
 }

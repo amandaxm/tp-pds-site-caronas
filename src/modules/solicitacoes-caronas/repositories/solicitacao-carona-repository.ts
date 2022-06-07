@@ -9,21 +9,21 @@ import { IAceitarRecusarCaronaDTO } from '../dtos/aceitarRecusarCarona.dto';
 import { ISolicitacaoDTO } from '../dtos/solicitacaoCarona.dto copy';
 
 class SolicitacoesCaronaRepository implements ISolicitacoesCaronaRepository {
- 
+
   async solicitarCarona({
     idCarona,
-    idPassageiro,
+    passageiro,
     situacao,
     motorista
   }: ISolicitacaoDTO): Promise<ISolicitacao> {
 
     const solicitacao = await Solicitacao.create({
-    idCarona,
-    idPassageiro,
-    situacao,
-    motorista
+      idCarona,
+      passageiro,
+      situacao,
+      motorista
     });
-   
+
     return solicitacao;
   }
 
@@ -40,19 +40,19 @@ class SolicitacoesCaronaRepository implements ISolicitacoesCaronaRepository {
     );
     return solicitacao;
   }
-  
+
   async getCaronasSolicitadasMotorista(motorista: string): Promise<ISolicitacao[]> {
-    return await Solicitacao.find( { motorista: motorista } );
+    return await Solicitacao.find({ motorista: motorista }).populate('passageiro');
   }
 
- async getCaronasSolicitadasPassageiro(idPassageiro: string): Promise<ISolicitacao[]> {
+  async getCaronasSolicitadasPassageiro(passageiro: string): Promise<ISolicitacao[]> {
 
-    return await Solicitacao.find( { idPassageiro: idPassageiro});
+    return await Solicitacao.find({ passageiro: passageiro }).populate('passageiro');
   }
   async delete(_id: string): Promise<void> {
     await Solicitacao.findByIdAndDelete({ _id });
   }
-  
+
   async getById(id: string): Promise<ISolicitacao> {
     return await Solicitacao.findById(id);
   }

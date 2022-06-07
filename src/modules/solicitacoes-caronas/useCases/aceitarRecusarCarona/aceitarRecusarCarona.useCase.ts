@@ -31,12 +31,12 @@ class AceitarRecusarCaronaUseCase {
     var numeroDeVagasAtuais = carona.vagasDisponiveis.valueOf();
  
 
-    if(carona.passageiros.find(x => x.usuarioId === solicitacaoResponder.idPassageiro)){ // se motorista mudou de ideia e deseja aceitar/recusar passageiro
-      var index = carona.passageiros.findIndex(x => x.usuarioId === solicitacaoResponder.idPassageiro);
-      carona.passageiros[index] =  { usuarioId: solicitacaoResponder.idPassageiro, status: situacao } // update passageiro na carona
+    if(carona.passageiros.find(x => x.usuarioId === solicitacaoResponder.passageiro)){ // se motorista mudou de ideia e deseja aceitar/recusar passageiro
+      var index = carona.passageiros.findIndex(x => x.usuarioId === solicitacaoResponder.passageiro);
+      carona.passageiros[index] =  { usuarioId: solicitacaoResponder.passageiro, status: situacao } // update passageiro na carona
 
     } else {
-      const passageiroRecusarAceitar = { usuarioId: solicitacaoResponder.idPassageiro, status: situacao };
+      const passageiroRecusarAceitar = { usuarioId: solicitacaoResponder.passageiro, status: situacao };
       carona.passageiros.push(passageiroRecusarAceitar); // se não adiciona passageiro a carona e decresce o número de vagas
       numeroDeVagasAtuais = situacao === Status.Aceito ? numeroDeVagasAtuais - 1 : numeroDeVagasAtuais;// se for aceito decresce
     }

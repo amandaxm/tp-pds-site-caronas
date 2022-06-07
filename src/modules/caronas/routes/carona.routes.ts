@@ -26,6 +26,6 @@ CaronaRoutes.delete('/:_id',auth, deleteCaronaController.handle);
 CaronaRoutes.get('/:_id',auth, showCaronaController.handle);
 CaronaRoutes.get('/', listCaronaController.handle);
 CaronaRoutes.get('/motorista/:motorista', showCaronaUsuarioController.handle);
-CaronaRoutes.get('/passageiro/:idPassageiro', showCaronaPassageiroController.handle);
+CaronaRoutes.get('/passageiro/:passageiro', showCaronaPassageiroController.handle);
 
 export { CaronaRoutes };

@@ -1,7 +1,7 @@
 import { Status } from './../../ValueObjects/EnumStatus';
 interface ISolicitacaoDTO {
   idCarona: string,
-  idPassageiro: string
+  passageiro: string
   situacao: Status,
   motorista: string
 }

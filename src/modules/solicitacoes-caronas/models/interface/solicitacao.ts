@@ -4,7 +4,7 @@ import { Status } from '../../../ValueObjects/EnumStatus';
 interface ISolicitacao extends Document {
   _id?: string;
   idCarona: string,
-  idPassageiro: string,
+  passageiro: string,
   motorista: string,
   situacao: Status
 }

@@ -5,7 +5,7 @@ import { IAceitarRecusarCaronaDTO } from '../../dtos/aceitarRecusarCarona.dto';
 interface ISolicitacoesCaronaRepository {
   solicitarCarona({   
     idCarona,
-    idPassageiro,
+    passageiro,
     situacao,
     motorista
   }: ISolicitacaoDTO): Promise<ISolicitacao>;
@@ -16,7 +16,7 @@ interface ISolicitacoesCaronaRepository {
   }: IAceitarRecusarCaronaDTO): Promise<ISolicitacao>;
   delete(_id: string): Promise<void>;
   getCaronasSolicitadasMotorista(motorista: string): Promise<ISolicitacao[]>;
-  getCaronasSolicitadasPassageiro(idPassageiro: string): Promise<ISolicitacao[]>;
+  getCaronasSolicitadasPassageiro(passageiro: string): Promise<ISolicitacao[]>;
   getById(id: string): Promise<ISolicitacao>;
 
 }

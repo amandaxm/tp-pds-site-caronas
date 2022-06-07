@@ -83,9 +83,9 @@ class CaronaRepository implements ICaronaRepository {
     return await Carona.find({ motorista: motorista });
   }
 
-  async getCaronasPassageiro(idPassageiro: string): Promise<ICarona[]> {
+  async getCaronasPassageiro(passageiro: string): Promise<ICarona[]> {
 
-    return await Carona.find({ idPassageiro: idPassageiro });
+    return await Carona.find({ passageiro: passageiro });
   }
 }
 
