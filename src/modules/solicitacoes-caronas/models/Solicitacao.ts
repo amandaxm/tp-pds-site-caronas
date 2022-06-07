@@ -13,7 +13,7 @@ const SolicitacaoSchema: Schema = new Schema(
       required: true,
     },
     motorista: {
-      type: String,
+      type: Schema.Types.ObjectId, ref: 'Usuario',
       required: true,
     },
     situacao: {

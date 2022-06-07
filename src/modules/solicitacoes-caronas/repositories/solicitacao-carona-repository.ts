@@ -47,7 +47,7 @@ class SolicitacoesCaronaRepository implements ISolicitacoesCaronaRepository {
 
   async getCaronasSolicitadasPassageiro(passageiro: string): Promise<ISolicitacao[]> {
 
-    return await Solicitacao.find({ passageiro: passageiro }).populate('passageiro');
+    return await Solicitacao.find({ passageiro: passageiro }).populate('motorista');
   }
   async delete(_id: string): Promise<void> {
     await Solicitacao.findByIdAndDelete({ _id });
