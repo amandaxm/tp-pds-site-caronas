@@ -15,8 +15,17 @@ database.connect();
 const app = express();
 
 app.use(express.json());
+
+const options: cors.CorsOptions = {
+  origin: "*"
+};
+
+app.use(cors(options));
+
+app.use(express.json());
 app.use(routes);
-app.use(cors());
+
+// Forward requests for the /rooms URI to our rooms router
 
 
 app.use(

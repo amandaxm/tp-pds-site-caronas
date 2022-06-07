@@ -26,7 +26,7 @@ class UpdateCaronaUseCase {
     valor,
     passageiros
   }: IAtualizarCaronaDTO): Promise<ICarona> {
-    const CaronaExists = await this.CaronaRepository.getById(id);
+    const CaronaExists = await this.CaronaRepository.getById(id.toString());
     if (!CaronaExists) throw new AppError('Carona não encontrada');
     const carona = await this.CaronaRepository.update({
       id,
