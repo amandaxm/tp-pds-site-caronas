@@ -6,40 +6,41 @@ import { IUsuario } from '../../models/interface/usuario';
 
 import { UsuarioRepository } from '../../repositories/usuario-repository';
 
-class LoginUsuarioUseCase{
-  
+class LoginUsuarioUseCase {
+
   async execute({
     email,
     senha
-  }: any): Promise<IUsuario> {
+  }: any): Promise<{ token: string, user: IUsuario }> {
 
-    const usuarioRepository =  new UsuarioRepository();
+    const usuarioRepository = new UsuarioRepository();
     const user = await usuarioRepository.getByEmail(email);
 
-    if (!user) {
+    if (!user)
       throw new AppError("Usuário não encontrado!");
-    }
+
     const checkPassword = await bcrypt.compare(senha.toString(), user.senha.toString());
 
-    if (!checkPassword) {
+    if (!checkPassword)
       throw new AppError("Senha inválida");
-    }
-  
+
+
     try {
       const secret = process.env.SECRET;
-    
-      const token = jwt.sign(
-        {
-          id: user._id,
-        },
+
+      const token = jwt.sign({
+        id: user._id,
+      },
         secret
       );
-  
-      return token;
+
+      return { token: token, user: user };
+
     } catch (error) {
       throw new AppError("Erro ao autenticar")
-  }}
+    }
+  }
 
 }
 
-export { LoginUsuarioUseCase};
+export { LoginUsuarioUseCase };
