@@ -6,13 +6,13 @@ import { AppError } from '../../../../error/AppError';
 
 class SolicitarCaronaController {
   async handle(request: Request, response: Response, next): Promise<Response> {
-    const { idCarona,
+    const { carona,
       passageiro,
       situacao,
       motorista } = request.body;
 
-    if (idCarona == null || idCarona == undefined)
-      throw new AppError('idCarona é obrigatório');
+    if (carona == null || carona == undefined)
+      throw new AppError('carona é obrigatório');
 
     if (passageiro == null || passageiro == undefined)
       throw new AppError('passageiro é obrigatório');
@@ -26,7 +26,7 @@ class SolicitarCaronaController {
     const solicitarCaronaUseCase = container.resolve(SolicitarCaronaUseCase);
 
     const result = await solicitarCaronaUseCase.execute({
-      idCarona,
+      carona,
       passageiro,
       situacao,
       motorista

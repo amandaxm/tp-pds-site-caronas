@@ -4,7 +4,7 @@ import { IAceitarRecusarCaronaDTO } from '../../dtos/aceitarRecusarCarona.dto';
 
 interface ISolicitacoesCaronaRepository {
   solicitarCarona({   
-    idCarona,
+    carona,
     passageiro,
     situacao,
     motorista

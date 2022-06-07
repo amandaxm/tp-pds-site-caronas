@@ -26,7 +26,7 @@ class AceitarRecusarCaronaUseCase {
   }: IAceitarRecusarCaronaDTO): Promise<ISolicitacao> {
 
     const solicitacaoResponder = await this.repository.getById(idSolicitacao);
-    const carona = await this.caronaRepository.getById(solicitacaoResponder.idCarona);
+    const carona = await this.caronaRepository.getById(solicitacaoResponder.carona);
    
     var numeroDeVagasAtuais = carona.vagasDisponiveis.valueOf();
  

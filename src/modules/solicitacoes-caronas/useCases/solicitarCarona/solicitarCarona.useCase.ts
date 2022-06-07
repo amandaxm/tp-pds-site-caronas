@@ -18,16 +18,14 @@ class SolicitarCaronaUseCase {
   ) {}
 
   async execute({
-    idCarona,
+    carona,
     passageiro,
     situacao,
     motorista
   }: ISolicitacaoDTO): Promise<ISolicitacao> {
-
-    var carona = await this.caronaRepository.getById(idCarona); 
    
       const solicitacao = await this.repository.solicitarCarona({
-        idCarona,
+        carona,
         passageiro,
         situacao,
         motorista

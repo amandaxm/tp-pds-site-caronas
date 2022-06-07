@@ -4,8 +4,8 @@ import { ISolicitacao } from './interface/solicitacao';
 
 const SolicitacaoSchema: Schema = new Schema(
   {
-    idCarona: {
-      type: String,
+    carona: {
+      type: Schema.Types.ObjectId, ref: 'Carona',
       required: true,
     },
     passageiro: {

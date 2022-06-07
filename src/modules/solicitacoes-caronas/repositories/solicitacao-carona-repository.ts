@@ -11,14 +11,14 @@ import { ISolicitacaoDTO } from '../dtos/solicitacaoCarona.dto copy';
 class SolicitacoesCaronaRepository implements ISolicitacoesCaronaRepository {
 
   async solicitarCarona({
-    idCarona,
+    carona,
     passageiro,
     situacao,
     motorista
   }: ISolicitacaoDTO): Promise<ISolicitacao> {
 
     const solicitacao = await Solicitacao.create({
-      idCarona,
+      carona,
       passageiro,
       situacao,
       motorista
@@ -42,12 +42,11 @@ class SolicitacoesCaronaRepository implements ISolicitacoesCaronaRepository {
   }
 
   async getCaronasSolicitadasMotorista(motorista: string): Promise<ISolicitacao[]> {
-    return await Solicitacao.find({ motorista: motorista }).populate('passageiro');
+    return await Solicitacao.find({ motorista: motorista }).populate('carona').populate('passageiro');
   }
 
   async getCaronasSolicitadasPassageiro(passageiro: string): Promise<ISolicitacao[]> {
-
-    return await Solicitacao.find({ passageiro: passageiro }).populate('motorista');
+    return await Solicitacao.find({ passageiro: passageiro }).populate('carona').populate('motorista');
   }
   async delete(_id: string): Promise<void> {
     await Solicitacao.findByIdAndDelete({ _id });
