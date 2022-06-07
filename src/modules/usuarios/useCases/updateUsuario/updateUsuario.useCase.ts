@@ -23,7 +23,7 @@ class UpdateUsuarioUseCase {
     eMotorista
   }: IAtualizarUsuarioDTO): Promise<IUsuario> {
     const UsuarioExists = await this.UsuarioRepository.getById(id);
-    if (!UsuarioExists) throw new AppError('Usuario not found');
+    if (!UsuarioExists) throw new AppError('Usuario não existe');
     const usuario = await this.UsuarioRepository.update({
     id,
     nome,

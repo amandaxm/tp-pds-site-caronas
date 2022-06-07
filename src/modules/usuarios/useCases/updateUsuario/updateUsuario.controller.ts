@@ -13,10 +13,25 @@ class UpdateUsuarioController {
       senha,
       ePassageiro,
       eMotorista } = request.body;
-    if (_id !== id) throw new AppError('Usuário id inválido');
+
+    if (nome == null || nome == undefined)
+      throw new AppError('Nome é obrigatório');
+
+    if (senha == null || senha == undefined)
+      throw new AppError('Senha obrigatória');
+
+    if (email == null || email == undefined)
+      throw new AppError('Email obrigatório');
+
+    if (eMotorista == null || eMotorista == undefined)
+      throw new AppError('Flag eMotorista obrigatória');
+
+    if (ePassageiro == null || ePassageiro == undefined)
+      throw new AppError('Flag ePassageiro obrigatória');
+
     const updateUsuarioUseCase = container.resolve(UpdateUsuarioUseCase);
     const usuario = await updateUsuarioUseCase.execute({
-      id,
+    id,
     nome,
     email,
     senha,
