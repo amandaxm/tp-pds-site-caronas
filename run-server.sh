@@ -1,1 +1,1 @@
-ts-node ./src/server/server.ts
+ts-node ./src/server/server.ts --watch
