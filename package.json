@@ -7,7 +7,7 @@
     "start": "ts-node ./src/server/server.ts",
     "dev": "env nodemon ./src/server/server.ts",
     "pm2": "NODE_ENV=production pm2 start ./src/server/server.ts --watch",
-    "test": "jest --maxWorkers=1",
+    "test": "jest --maxWorkers=1 --forceExit",
     "test:coverage": "jest --maxWorkers=1 --coverage"
   },
   "dependencies": {
