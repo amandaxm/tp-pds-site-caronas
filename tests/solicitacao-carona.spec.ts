@@ -88,7 +88,7 @@ it("Sucesso criar solicitacao carona", async () => {
     .get(endereco)
     .set('Authorization', `Bearer ${loginUser.body.token}`)
 
-    expect(response.statusCode).toBe(200);
+    expect(response.statusCode).toBe(400);
 });
   
 
