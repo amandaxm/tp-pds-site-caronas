@@ -2,7 +2,7 @@ import Usuario from "../src/modules/usuarios/models/Usuario";
 const request = require('supertest');
 const server = require('../src/server/server')
 
-afterEach(async ()=>{
+afterEach(async () => {
   await server.close();
 })
 
@@ -21,7 +21,7 @@ it("Erro criar usuário sem email", async () => {
   expect(response.statusCode).toBe(400);
 });
 
-afterEach(async ()=>{
+afterEach(async () => {
   await server.close();
 })
 it("Erro criar usuário sem nome", async () => {
@@ -39,7 +39,7 @@ it("Erro criar usuário sem nome", async () => {
   expect(response.statusCode).toBe(400);
 });
 
-afterEach(async ()=>{
+afterEach(async () => {
   await server.close();
 })
 it("Erro criar usuário sem senha", async () => {
@@ -57,7 +57,7 @@ it("Erro criar usuário sem senha", async () => {
   expect(response.statusCode).toBe(400);
 });
 
-afterEach(async ()=>{
+afterEach(async () => {
   await server.close();
 })
 it("Erro criar usuário sem flag eMotorista", async () => {
@@ -76,7 +76,7 @@ it("Erro criar usuário sem flag eMotorista", async () => {
   expect(response.statusCode).toBe(400);
 });
 
-afterEach(async ()=>{
+afterEach(async () => {
   await server.close();
 })
 it("Erro criar usuário sem flag eMotorista", async () => {
@@ -95,7 +95,7 @@ it("Erro criar usuário sem flag eMotorista", async () => {
 });
 
 
-afterEach(async ()=>{
+afterEach(async () => {
   await server.close();
 })
 it("Erro ao tentar criar usuário que já existe", async () => {
@@ -127,7 +127,7 @@ beforeEach(async () => {
   await Usuario.findOneAndDelete({ email: "emailemailemailteste@email" });
 });
 
-afterEach(async ()=>{
+afterEach(async () => {
   await server.close();
 })
 it("Sucesso ao criar usuário", async () => {
@@ -145,7 +145,7 @@ it("Sucesso ao criar usuário", async () => {
 
 //atualizar usuario
 
-afterEach(async ()=>{
+afterEach(async () => {
   await server.close();
 })
 it("Erro ao atualizar sem token", async () => {
@@ -169,7 +169,7 @@ beforeEach(async () => {
   await Usuario.findOneAndDelete({ email: "emailemailemail10@email" });
 });
 
-afterEach(async ()=>{
+afterEach(async () => {
   await server.close();
 })
 it("Erro ao atualizar usuário com token invalido", async () => {
@@ -191,7 +191,7 @@ it("Erro ao atualizar usuário com token invalido", async () => {
 });
 
 
-afterEach(async ()=>{
+afterEach(async () => {
   await server.close();
 })
 it("Erro realizar login senha incorreta", async () => {
@@ -209,7 +209,7 @@ it("Erro realizar login senha incorreta", async () => {
 });
 
 
-afterEach(async ()=>{
+afterEach(async () => {
   await server.close();
 })
 it("Erro email obrigatório ", async () => {
@@ -234,7 +234,7 @@ it("Erro email obrigatório ", async () => {
 });
 
 
-afterEach(async ()=>{
+afterEach(async () => {
   await server.close();
 })
 it("Erro senha obrigatória", async () => {
@@ -258,7 +258,7 @@ it("Erro senha obrigatória", async () => {
   expect(loginUser.text).toContain("Senha obrigatória");
 });
 
-afterEach(async ()=>{
+afterEach(async () => {
   await server.close();
 })
 it("Sucesso ao realizar login", async () => {
@@ -282,7 +282,7 @@ it("Sucesso ao realizar login", async () => {
   expect(loginUser.statusCode).toBe(201);
 });
 
-afterEach(async ()=>{
+afterEach(async () => {
   await server.close();
 })
 it("Erro atualizar usuário não existe", async () => {
@@ -311,12 +311,106 @@ it("Erro atualizar usuário não existe", async () => {
   expect(response.text).toContain("Usuario não existe");
 });
 
-afterEach(async ()=>{
+afterEach(async () => {
   await server.close();
 })
-  it("Retorna todos usuarios'", () => {
-    request(server)
-      .get('/usuarios')
-      .expect(200)
+it("Retorna todos usuarios'", () => {
+  request(server)
+    .get('/usuarios')
+    .expect(200)
+})
+
+
+it("Sucesso delete usuario", async () => {
+  //mock id
+
+  let idUsuario = "62c2e6592412f53740081fb7";
+
+  let response = await Usuario.findByIdAndDelete({
+    _id: idUsuario
+  })
+  expect(response).toBeNull();
+
+});
+
+it("Sucesso atualizar usuario", async () => {
+
+  const usuario_create = await Usuario.create({
+    nome: " Nome Teste",
+    email: "email11122422@email",
+    senha: "teste",
+    ePassageiro: true,
+    eMotorista: false
   })
 
+  const loginUser = await request(server)
+    .post("/usuarios/login")
+    .send({
+      email: "emailemailemailteste11@email",
+      senha: "teste"
+    })
+
+  const response = await request(server)
+    .put('/usuarios/' + usuario_create._id)
+    .send({
+      id: usuario_create._id,
+      nome: " Mudando nome Teste",
+      email: "email11122422@email",
+      senha: "teste",
+      ePassageiro: true,
+      eMotorista: false
+    })
+
+    .set('Authorization', `Bearer ${loginUser.body.token}`)
+  expect(response.statusCode).toBe(200);
+  expect(response.text).toContain("Mudando nome Teste");
+
+})
+
+beforeEach(async () => {
+  await Usuario.findOneAndDelete({ email: "email11122425445542@email" });
+});
+
+it("Sucesso criar usuario", async () => {
+
+  const response = await request(server)
+    .post('/usuarios/')
+    .send({
+      nome: " create",
+      email: "email11122425445542@email",
+      senha: "teste",
+      ePassageiro: true,
+      eMotorista: false
+    })
+  expect(response.statusCode).toBe(201);
+
+})
+
+it("Sucesso deletar usuario", async () => {
+
+  const usuario_create = await Usuario.create({
+    nome: " Nome Teste",
+    email: "email11122422@email",
+    senha: "teste",
+    ePassageiro: true,
+    eMotorista: false
+  })
+
+  const loginUser = await request(server)
+    .post("/usuarios/login")
+    .send({
+      email: "emailemailemailteste11@email",
+      senha: "teste"
+    })
+
+  const response = await request(server)
+    .delete('/usuarios/' + usuario_create._id)
+    .send({
+      idUsuario: usuario_create._id
+    })
+    .set('Authorization', `Bearer ${loginUser.body.token}`)
+
+  expect(response.statusCode).toBe(200);
+  expect(response.text).toContain(`Usuario ${usuario_create._id} removido com sucesso`);
+
+})
