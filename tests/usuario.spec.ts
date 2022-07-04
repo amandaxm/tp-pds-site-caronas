@@ -1,10 +1,24 @@
 import Usuario from "../src/modules/usuarios/models/Usuario";
 const request = require('supertest');
 const server = require('../src/server/server')
+import * as bcrypt from 'bcrypt';
 
 afterEach(async () => {
   await server.close();
 })
+
+it("Sucesso ao criar usuário, gerando id usuario", async () => {
+
+  const usuario = await Usuario.create({
+      nome: " Nome Teste",
+      senha: "teste",
+      email: "emailparateste@email.com",
+      ePassageiro: true,
+      eMotorista: true
+    })
+    
+  expect(usuario).toHaveProperty("_id");
+});
 
 it("Erro criar usuário sem email", async () => {
 

@@ -27,6 +27,22 @@ afterEach(async ()=>{
     expect(solicitacao_carona).toHaveProperty("_id");
   });
 
+  it("Sucesso ao aceitar carona", async () => {
+    //mock id
+    let  idCarona = '62c2e6044d3da3c5652b66a6';
+    let  idPassageiro = "62c2e651721b60312f7e7096";
+    let  idMotorista = "62c2e6592412f53740081fb5";
+
+    const solicitacao_carona = await Solicitacao.findOneAndUpdate({
+      carona: idCarona,
+      passageiro: idPassageiro,
+      situacao: "Aceito",
+      motorista: idMotorista
+      })
+      // solicitacao passa de pendente para ACEITO = 1
+      expect(solicitacao_carona.situacao).toContain("Aceito");
+  });
+
   
 it("Sucesso criar solicitacao carona", async () => {
 
